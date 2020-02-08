@@ -1,9 +1,8 @@
-#include <iostream>
-
-using namespace std;
+#include "sudoku.h"
+#include "interface.h"
 
 int main()
 {
-    cout << "urd.." << endl;
+    displaySudoku();
     return 0;
 }

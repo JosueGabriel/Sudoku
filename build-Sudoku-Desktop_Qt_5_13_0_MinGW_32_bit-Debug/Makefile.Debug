@@ -50,7 +50,8 @@ OBJECTS_DIR   = debug
 SOURCES       = ..\Sudoku\main.cpp 
 OBJECTS       = debug/main.o
 
-DIST          =   ..\Sudoku\main.cpp
+DIST          =  interface.h \
+		sudoku.h ..\Sudoku\main.cpp
 QMAKE_TARGET  = Sudoku
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = Sudoku.exe
@@ -98,7 +99,7 @@ compiler_clean:
 
 ####### Compile
 
-debug/main.o: ../Sudoku/main.cpp 
+debug/main.o: ../Sudoku/main.cpp ../Sudoku/sudoku.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\Sudoku\main.cpp
 
 ####### Install
