@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <numeric>
 
 #define Size 9
 
@@ -13,7 +15,7 @@ std::vector <int> FinalPos; // ultima posição vazia
 std::vector <int> potatoSequence; //123456789
 
 
-std::vector<vector<char>> Matrix = {{' ','5','2','8',' ','6','4','3',' '},
+char Matrix[Size][Size] = {{' ','5','2','8',' ','6','4','3',' '},
                                 {' ','9','3',' ',' ',' ',' ','1','7'},
                                 {'6',' ',' ',' ','7','9','2',' ',' '},
                                 {'2',' ',' ','4','5',' ',' ','6',' '},
@@ -52,18 +54,29 @@ bool validPosition(int pos0, int pos1, int value){
     // achar uma forma de verificar o quadrante da posição ; linha horizontal e vertical é tranquilo
 }
 
-void configureAll(){
-    setInicialFinalPos();
-    std::iota (potatoSequence.begin(),potatoSequence.end(),1);
+std::vector<int> nextPosition(std::vector<int> currentPosition){
+    for(int i = currentPosition[0]; i < Size; i++){
+        for(int j = currentPosition[1]; j < Size; j++){
+            if(Matrix[i][j] == ' '){
+                currentPosition = {i,j};
+                return currentPosition;
+            }
+        }
+    }
+    return currentPosition;
 }
 
-void solver(int pos0, int pos1){
-    for(int i:Posibilities(pos0, pos1)){
-        if(validPosition(pos0, pos1, i)){
-            Matrix[pos0][pos1] = i;
-            if(!(pos0 == FinalPos[0] and pos1 == FinalPos[1])){
-                solver(NextPosition) // implementar algo para ir para proxima posição
-            }
+void configureAll(){
+    setInicialFinalPos();
+    iota(potatoSequence.begin(),potatoSequence.end(),1);
+}
+
+void solver(std::vector <int> currentPosition = InicialPos){
+    for(int i:Posibilities(currentPosition[0], currentPosition[1])){
+        if(validPosition(currentPosition[0], currentPosition[1], i)){
+            Matrix[currentPosition[0]][currentPosition[1]] = i;
+            if(!(currentPosition[0] == FinalPos[0] and currentPosition[1] == FinalPos[1]))
+                solver(nextPosition(currentPosition));
             else{
                 solved = true;
                 return;
