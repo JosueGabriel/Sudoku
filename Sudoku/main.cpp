@@ -3,9 +3,10 @@
 
 int main()
 {
-
-    setInicialFinalPos();
-    std::cout<< FinalPos[1];
-
+    configureAll();
+    displaySudoku();
+    solver();
+    displaySudoku();
+    std::cout<<contador;
     return 0;
 }

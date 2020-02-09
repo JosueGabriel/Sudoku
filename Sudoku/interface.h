@@ -13,6 +13,7 @@ void displaySudoku(){
         }
         std::cout << std::endl;
     }
+    std::cout << std::endl;
 }
 
 #endif // INTERFACE_H
