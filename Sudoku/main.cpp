@@ -3,6 +3,9 @@
 
 int main()
 {
-    displaySudoku();
+
+    setInicialFinalPos();
+    std::cout<< FinalPos[1];
+
     return 0;
 }
