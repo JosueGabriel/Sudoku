@@ -153,33 +153,53 @@ bool validPosition(std::vector<int> currentPosition, int value){
     return true;
 }
 
-std::vector<int> nextPosition(std::vector<int> currentPosition){
+std::vector<int> nextPosition(){
     std::vector<int> nextPosition;
-
+    //std::cout << "currentP: "<< currentPosition[0] << "-" << currentPosition[1] << std::endl;
     for(int i = 0; i < Size; i++){
         for(int j = 0; j < Size; j++){
             if(Matrix[i][j] == ' '){
                 nextPosition = {i,j};
+                std::cout << nextPosition[0] << " | " << nextPosition[1] << std::endl;
                 return nextPosition;
             }
         }
     }
+    return {-1,-1};
 }
 
 void configureAll(){
     setInicialFinalPos();
     iota(potatoSequence.begin(),potatoSequence.end(),1);
+    std::cout << "potatoS: ";
+    for(int i:potatoSequence){
+        std::cout << i << "|";
+    }
+    std::cout<< std::endl;
 }
 
-void solver(std::vector <int> currentPosition = InicialPos){
+void solver(){
+    std::vector <int> currentPosition = nextPosition();
+    for(auto a:currentPosition){
+        std::cout<< a << "|";
+    }
+    std::cout<<std::endl;
+
+    if(currentPosition[0] == -1 && currentPosition[1] == -1){
+        solved = true;
+        return;
+    }
     for(int i:potatoSequence){
         if(validPosition(currentPosition, i)){
             Matrix[currentPosition[0]][currentPosition[1]] = i+'0';
-            solver(nextPosition(currentPosition));
-            if(validSolved())
+            std::cout << "Matriz["<<currentPosition[0]<<"]["<<currentPosition[1]<<"] =" << Matrix[currentPosition[0]][currentPosition[1]] << std::endl;
+            solver();
+            std::cout<<"passei"<<std::endl;
+            if(solved)
                 return;
         }
     }
+    Matrix[currentPosition[0]][currentPosition[1]] = ' ';
     return;
 }
 #endif // SUDOKU_H
