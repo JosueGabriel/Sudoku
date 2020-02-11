@@ -7,6 +7,5 @@ int main()
     displaySudoku();
     solver();
     displaySudoku();
-    std::cout<<contador;
     return 0;
 }
