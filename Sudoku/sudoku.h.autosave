@@ -22,20 +22,7 @@ static std::vector <int> goodSequence;
 static std::vector < std::tuple<std::pair<int,int>, std::vector<int>> > position;
 static std::vector<std::pair<int,int>> numberCount(Size);
 
-//gerada
 static std::vector<std::vector<int>> Matrix;
-
-/* Expert */
-//char Matrix[Size][Size] = {{' ','7',' ',' ',' ','1','9',' ',' '},
-//                           {' ',' ',' ',' ','6',' ',' ','5',' '},
-//                           {' ',' ','9',' ',' ',' ',' ',' ','3'},
-//                           {' ',' ','5','6',' ',' ',' ',' ',' '},
-//                           {' ','2','8',' ','3',' ',' ',' ',' '},
-//                           {'7',' ','3',' ',' ','5',' ',' ',' '},
-//                           {'1',' ','7','9',' ',' ',' ',' ','2'},
-//                           {'2',' ',' ',' ',' ',' ',' ',' ','6'},
-//                           {'3',' ',' ','1',' ',' ',' ',' ',' '}};
-
 
 size_t getBlockCase(std::vector<size_t> currentPosition);
 bool validSolved();
@@ -95,6 +82,17 @@ void estruturaStatic(int M){
                   {0,6,0,0,0,0,0,2,1},
                   {0,0,0,6,3,4,0,7,0},
                   {5,3,7,0,0,0,0,0,0}};
+        break;
+    case 1:
+        Matrix = {{0,7,0,0,0,1,9,0,0},
+                  {0,0,0,0,6,0,0,5,0},
+                  {0,0,9,0,0,0,0,0,3},
+                  {0,0,5,6,0,0,0,0,0},
+                  {0,2,8,0,3,0,0,0,0},
+                  {7,0,3,0,0,5,0,0,0},
+                  {1,0,7,9,0,0,0,0,2},
+                  {2,0,0,0,0,0,0,0,6},
+                  {3,0,0,1,0,0,0,0,0}};
         break;
     default:
         Matrix = {{0,0,0,0,0,0,0,0,0},
